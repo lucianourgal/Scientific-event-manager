@@ -1,0 +1,172 @@
+INSERT INTO unidade(nome,id) VALUES ('Assis Chateaubriand',1);
+INSERT INTO unidade(nome,id) VALUES ('Campo Largo',2);
+INSERT INTO unidade(nome,id) VALUES ('Capanema',3);
+INSERT INTO unidade(nome,id) VALUES ('Cascavel',4);
+INSERT INTO unidade(nome,id) VALUES ('Colombo',5);
+INSERT INTO unidade(nome,id) VALUES ('Coronel Vivida',6);
+INSERT INTO unidade(nome,id) VALUES ('Curitiba',7);
+INSERT INTO unidade(nome,id) VALUES ('Foz do Iguaçu',8);
+INSERT INTO unidade(nome,id) VALUES ('Irati',9);
+INSERT INTO unidade(nome,id) VALUES ('Ivaiporã',10);
+INSERT INTO unidade(nome,id) VALUES ('Jacarezinho',11);
+INSERT INTO unidade(nome,id) VALUES ('Londrina',12);
+INSERT INTO unidade(nome,id) VALUES ('Palmas',13);
+INSERT INTO unidade(nome,id) VALUES ('Paranaguá',14);
+INSERT INTO unidade(nome,id) VALUES ('Paranavaí',15);
+INSERT INTO unidade(nome,id) VALUES ('Pinhais',16);
+INSERT INTO unidade(nome,id) VALUES ('Pitanga',17);
+INSERT INTO unidade(nome,id) VALUES ('Telêmaco Borba',18);
+INSERT INTO unidade(nome,id) VALUES ('Umuarama',19);
+INSERT INTO unidade(nome,id) VALUES ('União da Vitória',20);
+INSERT INTO unidade(nome,id) VALUES ('Barracão',21);
+INSERT INTO unidade(nome,id) VALUES ('Reitoria',22);
+
+INSERT INTO unidade(nome,id) VALUES ('Astorga',23);
+INSERT INTO unidade(nome,id) VALUES ('Jaguariaíva',24);
+INSERT INTO unidade(nome,id) VALUES ('Goioerê',25);
+
+
+INSERT INTO unidade(nome,id,diretor,endereco,telefone,limiteapresentacoesselecionadas,limitecomunicacaooralselecionadas,limiteiftech,limiterobotica,limiteacompanhantes,limitecultural)VALUES('Avaliador Externo',28,'NA','NA','NA',0,0,0,0,0,0);
+
+INSERT INTO modalidade(nome,id) VALUES ('Comunicação oral',2);
+INSERT INTO modalidade(nome,id) VALUES ('Poster',1);
+INSERT INTO modalidade(nome,id) VALUES ('Mostra IFTech',3);
+INSERT INTO modalidade(nome,id) VALUES ('Mostra de robótica',5);
+INSERT INTO modalidade(nome,id, temnomegrupo, usamateriais) VALUES ('Apresentacao cultural',4,1,1);
+
+INSERT INTO modalidade(nome,id) VALUES ('Oficina',7);
+INSERT INTO modalidade(nome,id) VALUES ('Sessão Temática',8);
+
+
+INSERT INTO area(nome,id) VALUES ('Ciências Exatas e da Terra',1);
+INSERT INTO area(nome,id) VALUES ('Ciências Sociais Aplicadas',2);
+INSERT INTO area(nome,id) VALUES ('Engenharias',4);
+INSERT INTO area(nome,id) VALUES ('Linguística, Letras e Artes',5);
+INSERT INTO area(nome,id) VALUES ('Ciencias da Saude',6);
+INSERT INTO area(nome,id) VALUES ('Ciências Agrárias',7);
+INSERT INTO area(nome,id) VALUES ('Ciências Humanas',8);
+INSERT INTO area(nome,id) VALUES ('Ciências Biológicas',9);
+
+INSERT INTO subarea(nome,id,area) VALUES ('1',1,1);
+INSERT INTO subarea(nome,id,area) VALUES ('2',2,2);
+INSERT INTO subarea(nome,id,area) VALUES ('4',4,4);
+INSERT INTO subarea(nome,id,area) VALUES ('5',5,5);
+INSERT INTO subarea(nome,id,area) VALUES ('6',6,6);
+INSERT INTO subarea(nome,id,area) VALUES ('7',7,7);
+INSERT INTO subarea(nome,id,area) VALUES ('8',8,8);
+INSERT INTO subarea(nome,id,area) VALUES ('9',9,9);
+
+
+INSERT INTO bolsa(nome,id) VALUES ('PIBEX',1);
+INSERT INTO bolsa(nome,id) VALUES ('PIBIC/PIBIC Jr',2);
+INSERT INTO bolsa(nome,id) VALUES ('PBIS',3);
+INSERT INTO bolsa(nome,id) VALUES ('PRADI/PIBITI',4);
+INSERT INTO bolsa(nome,id) VALUES ('IFTech',5);
+INSERT INTO bolsa(nome,id) VALUES ('Não bolsista/Voluntário',6);
+
+
+INSERT INTO tipopessoa(nome,id,podeapresentar,podeavaliar) VALUES ('Professor',2,0,1);
+INSERT INTO tipopessoa(nome,id,podeapresentar,podeavaliar) VALUES ('TAE',3,0,1);
+INSERT INTO tipopessoa(nome,id,podeapresentar,podeavaliar) VALUES ('Estudante',1,1,0);
+INSERT INTO tipopessoa(nome,id,podeapresentar,podeavaliar) VALUES ('Externo',4,1,1);
+
+INSERT INTO area(nome,id,tematica) VALUES ('Comunicação',11,1);
+INSERT INTO area(nome,id,tematica) VALUES ('Cultura',12,1);
+INSERT INTO area(nome,id,tematica) VALUES ('Direitos Humanos e Justiça',13,1);
+INSERT INTO area(nome,id,tematica) VALUES ('Educação',14,1);
+INSERT INTO area(nome,id,tematica) VALUES ('Meio Ambiente',15,1);
+INSERT INTO area(nome,id,tematica) VALUES ('Saúde',16,1);
+INSERT INTO area(nome,id,tematica) VALUES ('Tecnologia e Produção',17,1);
+INSERT INTO area(nome,id,tematica) VALUES ('Trabalho',18,1);
+
+INSERT INTO area(nome,id,tematica) VALUES ('Audiovisual',21,2);
+INSERT INTO area(nome,id,tematica) VALUES ('Artes Visuais',22,2);
+INSERT INTO area(nome,id,tematica) VALUES ('Literatura',23,2);
+INSERT INTO area(nome,id,tematica) VALUES ('Música',24,2);
+INSERT INTO area(nome,id,tematica) VALUES ('Teatro',25,2);
+INSERT INTO area(nome,id,tematica) VALUES ('Dança',26,2);
+
+INSERT INTO subarea(nome,id,area) VALUES ('Apresentação',211,21);
+INSERT INTO subarea(nome,id,area) VALUES ('Mostra',212,21);
+INSERT INTO subarea(nome,id,area) VALUES ('Exposição de Filmes de Curtametragem',213,21);
+INSERT INTO subarea(nome,id,area) VALUES ('Animação',214,21);
+INSERT INTO subarea(nome,id,area) VALUES ('Documentários',215,21);
+INSERT INTO subarea(nome,id,area) VALUES ('Outros',216,21);
+INSERT INTO subarea(nome,id,area) VALUES ('Apresentação',221,22);
+INSERT INTO subarea(nome,id,area) VALUES ('Mostra',222,22);
+INSERT INTO subarea(nome,id,area) VALUES ('Exposição de Grafite',223,22);
+INSERT INTO subarea(nome,id,area) VALUES ('Exposição de Gravura',224,22);
+INSERT INTO subarea(nome,id,area) VALUES ('Exposição de Escultura',225,22);
+INSERT INTO subarea(nome,id,area) VALUES ('Exposição de Pintura',226,22);
+INSERT INTO subarea(nome,id,area) VALUES ('Exposição de Fotografia',227,22);
+INSERT INTO subarea(nome,id,area) VALUES ('Outros',228,22);
+INSERT INTO subarea(nome,id,area) VALUES ('Apresentação',231,23);
+INSERT INTO subarea(nome,id,area) VALUES ('Mostra',232,23);
+INSERT INTO subarea(nome,id,area) VALUES ('Exposição de Poesias',233,23);
+INSERT INTO subarea(nome,id,area) VALUES ('Sarais literários',234,23);
+INSERT INTO subarea(nome,id,area) VALUES ('Contações de Histórias',235,23);
+INSERT INTO subarea(nome,id,area) VALUES ('Cordéis',236,23);
+INSERT INTO subarea(nome,id,area) VALUES ('Outros',238,23);
+INSERT INTO subarea(nome,id,area) VALUES ('Apresentação Vocal',241,24);
+INSERT INTO subarea(nome,id,area) VALUES ('Vocal Instrumental',242,24);
+INSERT INTO subarea(nome,id,area) VALUES ('Instrumental',243,24);
+INSERT INTO subarea(nome,id,area) VALUES ('Apresentação de Esquetes',251,25);
+INSERT INTO subarea(nome,id,area) VALUES ('Espetáculos Teatrais',252,25);
+INSERT INTO subarea(nome,id,area) VALUES ('Apresentação solo',261,26);
+INSERT INTO subarea(nome,id,area) VALUES ('Apresentação duo',262,26);
+INSERT INTO subarea(nome,id,area) VALUES ('Apresentação grupo',263,26);
+
+INSERT INTO funcao(nome,id) VALUES ('Orientador',2);
+INSERT INTO funcao(nome,id) VALUES ('Suplente de Apres. e Coautor',3);
+INSERT INTO funcao(nome,id) VALUES ('Coautor',1);
+
+
+INSERT INTO evento(nome,issn,local,ano, unidadesede) VALUES ('VIII Seminário de Extensão, Ensino, Pesquisa e Inovação','666572-2019','Campo Largo',2019, 2);
+
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('centralizado',1,1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('restricaoresumo',1,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('tamanhoresumo',200,500);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('versao',2019,726);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('telainicialsimples',0,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('senhaapresentador',1,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('bloqueioedicaoapresentacao',0,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('senhaavaliador',0,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('acessoapresentador',1,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('acessoapresentacaocoordenador',1,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('coordenadorcampuspodeexcluir',1,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('poderesetarsenha',1,-1);
+INSERT INTO valores (rotulo,valor1,valor2) VALUES ('usacodigosdecadastro',1,-1);
+
+INSERT INTO categoria (nome, id) VALUES ('Pesquisa', 0);
+INSERT INTO categoria (nome, id) VALUES ('Extensão', 1);
+INSERT INTO categoria (nome, id) VALUES ('Ensino', 2);
+INSERT INTO categoria (nome, id) VALUES ('Inovação', 3);
+INSERT INTO categoria (nome, id) VALUES ('IFTECH', 4);
+INSERT INTO categoria (nome, id) VALUES ('Robótica', 5);
+INSERT INTO categoria (nome, id) VALUES ('Apresentação Cultural', 6);
+
+INSERT INTO categoria (nome, id) VALUES ('Oficina', 7);
+INSERT INTO categoria (nome, id) VALUES ('Sessão Temática', 8);
+
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (0,1);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (0,2);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (1,1);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (1,2);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (2,1);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (2,2);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (3,1);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (3,2);
+
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (4,3);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (5,5);
+
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (6,4);
+
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (7,7);
+INSERT INTO categoriamodalidade (categoria, modalidade) VALUES (8,8);
+
+
+
+INSERT INTO avaliador (nome, unidade, cpf, tipopessoa, siape, sexo, senha) VALUES ('YOURNAME', 22, 'YOURCPF', 3, 123456, 'M', md5('yourpassword'));
+INSERT INTO coordenador (avaliador, unidade, centralizado) VALUES ('YOURCPF',22,1);
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2015-11-04T18:33:15 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Certificado Pronatec" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="696"/>
+	<parameter name="idalunos" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="validador" class="java.lang.String"/>
+	<parameter name="texto1" class="java.lang.String"/>
+	<parameter name="texto2" class="java.lang.String"/>
+	<parameter name="texto3" class="java.lang.String"/>
+	<parameter name="fonte" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT rotulo as valor2 from valores where valor1 > 2000]]>
+	</queryString>
+	<field name="valor2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="595" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}.intValue()==1]]></printWhenExpression>
+			<image hAlign="Center" vAlign="Middle" isUsingCache="false">
+				<reportElement key="image-1" positionType="Float" isPrintRepeatedValues="false" mode="Transparent" x="0" y="0" width="842" height="595"/>
+				<imageExpression><![CDATA["fundoCertificado.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<detail>
+		<band height="595" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-2" x="81" y="270" width="680" height="250">
+					<printWhenExpression><![CDATA[!$P{idalunos}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="styled">
+					<font fontName="Arial" size="14" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{texto1}+"<style isBold='true' pdfFontName='Helvetica-Bold'>"+$P{texto2}+"</style>"+$P{texto3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textfield-3" x="700" y="540" width="130" height="52" forecolor="white"/>
+				<textFieldExpression><![CDATA[$P{validador}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,327 @@
+CREATE DATABASE sepin;
+USE sepin;
+
+CREATE TABLE IF NOT EXISTS unidade
+(
+nome varchar(255) NOT NULL,
+diretor varchar(255),
+endereco varchar(255),
+telefone varchar(31),
+limiteapresentacoesselecionadas integer default 3,
+limitecomunicacaooralselecionadas integer default 1,
+limiteiftech integer default 2,
+limiterobotica integer default 1,
+limitecultural integer default 1,
+limiteacompanhantes integer default 1,
+usacodigosparacadastro integer default 1,
+id integer PRIMARY KEY
+);
+
+
+CREATE TABLE IF NOT EXISTS modalidade
+(
+nome varchar(255) NOT NULL,
+usamateriais integer default 0,
+temnomegrupo integer default 0,
+classificaarea integer default 1,
+classificatematica integer default 0,
+enabled integer default 1,
+id integer PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS categoria
+(
+nome varchar(255) NOT NULL,
+grandearea integer default 1,
+areatematica integer default 0,
+cultural integer default 0,
+comresumo integer default 1,
+id integer PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS categoriamodalidade
+(
+categoria integer,
+modalidade integer,
+FOREIGN KEY (categoria) REFERENCES categoria(id),
+FOREIGN KEY (modalidade) REFERENCES modalidade(id)
+);
+
+CREATE TABLE IF NOT EXISTS evento
+(
+nome varchar(255) NOT NULL,
+ano integer default 0,
+sepin integer default 1,
+local varchar(255),
+unidadesede integer,
+ativo integer default 1,
+data varchar(255),
+issn varchar(255) PRIMARY KEY
+);
+
+
+CREATE TABLE IF NOT EXISTS area
+(
+nome varchar(255) NOT NULL,
+tematica integer default 0,
+id integer PRIMARY KEY
+);
+CREATE TABLE IF NOT EXISTS subarea
+(
+nome varchar(255) NOT NULL,
+area integer,
+id integer PRIMARY KEY,
+FOREIGN KEY (area) REFERENCES area(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS bolsa
+(
+nome varchar(255) NOT NULL,
+id integer PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS funcao
+(
+nome varchar(255) NOT NULL,
+id integer PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS tipopessoa
+(
+nome varchar(255) NOT NULL,
+podeapresentar integer default 1,
+podeavaliar integer default 1,
+id integer PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS avaliador
+(
+nome varchar(255) NOT NULL,  
+cpf varchar(31),
+siape integer,
+horas integer,
+rg varchar(63),
+login varchar(31) UNIQUE,
+senha varchar(255) NOT NULL,
+sexo char,
+titulacao varchar(255),
+formacao varchar(511),
+observacoes varchar(511),
+
+  email varchar(255),
+  telefone varchar(127),
+  endereco varchar(255),   
+  municipio varchar(255),
+ estado varchar(15),
+bairro varchar(255),
+cep varchar(31),
+
+  banco varchar(31),
+  agencia varchar(15),
+  conta varchar(15),
+tipoconta varchar(63),
+
+acompanhante integer default 0,
+unidade integer,
+tipopessoa integer,
+
+FOREIGN KEY (unidade) REFERENCES unidade(id),
+FOREIGN KEY (tipopessoa) REFERENCES tipopessoa(id),
+PRIMARY KEY (cpf)
+);
+
+CREATE TABLE IF NOT EXISTS avalia
+(
+area integer,
+avaliador varchar(31),
+FOREIGN KEY (area) REFERENCES area(id),
+FOREIGN KEY (avaliador) REFERENCES avaliador(cpf)
+);
+
+CREATE TABLE IF NOT EXISTS apresentador
+(
+nome varchar(255),  
+cpf varchar(31),
+ rg varchar(63),
+login varchar(31) UNIQUE,
+senha varchar(255) NOT NULL,
+
+sexo char,
+datadenascimento date,  
+dataexprg date,
+ orgaoexpedidorrg varchar(15),
+ estadorg varchar(15),
+  pai varchar(255),
+ mae varchar(255),
+ naturalidade varchar(63),
+ estadodenaturalidade varchar(15),  
+
+  email varchar(255),
+  telefone varchar(255),
+  endereco varchar(255),
+  municipio varchar(255),
+  estado varchar(12),   
+cep varchar(15),
+bairro varchar(255),
+
+  banco varchar(63),
+  agencia varchar(15),
+  conta varchar(15),
+tipoconta varchar(63),
+
+observacoes varchar (1023),
+necessidadeespecial varchar(255),
+declarante varchar(31),
+nomedeclarante varchar(255),
+cpfdeclarante varchar(31),
+
+unidade integer,
+tipopessoa integer,
+bolsa integer,
+
+FOREIGN KEY (unidade) REFERENCES unidade(id),
+FOREIGN KEY (tipopessoa) REFERENCES tipopessoa(id),
+PRIMARY KEY (cpf)
+);
+
+
+CREATE TABLE IF NOT EXISTS apresentacao
+(
+nome varchar(255) NOT NULL,
+grupo varchar(255),
+inclusao varchar(31),
+diversidade varchar(31),
+resumo varchar (32767),
+palavraschave varchar(4095),
+materiais varchar(4095),
+linkvideo varchar(511),
+apresentador varchar(31),
+id SERIAL,
+modalidade integer,
+areatematica integer,
+subarea integer,
+evento varchar(255),
+comunicaooral integer default 1,
+selecionada integer default 0,
+hospedagem integer default 0,
+transporte integer default 0,
+alimentacao integer default 0,
+apresentadorefetivo integer default -1,
+categoria integer,
+
+FOREIGN KEY (evento) REFERENCES evento(issn),
+FOREIGN KEY (categoria) REFERENCES categoria(id),
+
+FOREIGN KEY (subarea) REFERENCES subarea(id),
+FOREIGN KEY (modalidade) REFERENCES modalidade(id),
+FOREIGN KEY (apresentador) REFERENCES apresentador(cpf)
+);
+
+
+CREATE TABLE IF NOT EXISTS avaliacao
+(
+nota integer default 0,
+avaliador varchar(31),
+oral integer default 0,
+apresentacao BIGINT UNSIGNED,
+centralizado integer,
+ausente integer default 0,
+ativa integer default 0,
+permitida integer default 1,
+
+PRIMARY KEY(avaliador, apresentacao,centralizado),
+FOREIGN KEY (avaliador) REFERENCES avaliador(cpf),
+FOREIGN KEY (apresentacao) REFERENCES apresentacao(id)
+);
+
+CREATE TABLE IF NOT EXISTS coordenador
+(
+avaliador varchar(31),
+unidade integer,
+centralizado integer default 0,
+
+
+FOREIGN KEY (avaliador) REFERENCES avaliador(cpf),
+FOREIGN KEY (unidade) REFERENCES unidade(id)
+);
+
+CREATE TABLE IF NOT EXISTS autor
+(
+id SERIAL,
+apresentacao BIGINT UNSIGNED,
+nome varchar(255),
+email varchar(255),
+cpf varchar(255),
+rg varchar(63),
+sexo varchar(15),
+nascimento date,
+unidade integer,
+funcao integer,
+ativo integer default 0,
+FOREIGN KEY (apresentacao) REFERENCES apresentacao(id),
+FOREIGN KEY (funcao) REFERENCES funcao(id),
+FOREIGN KEY (unidade) REFERENCES unidade(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS convenio
+(
+autor BIGINT UNSIGNED,
+apresentador varchar(31),
+apresentacao BIGINT UNSIGNED NOT NULL,
+bolsa integer,
+
+FOREIGN KEY (apresentacao) REFERENCES apresentacao(id),
+FOREIGN KEY (apresentador) REFERENCES apresentador(cpf),
+FOREIGN KEY (autor) REFERENCES autor(id),
+FOREIGN KEY (bolsa) REFERENCES bolsa(id)
+);
+
+CREATE TABLE IF NOT EXISTS valores
+( 
+  rotulo varchar(255),
+   valor1 integer NOT NULL, 
+   valor2 integer DEFAULT 0,
+PRIMARY KEY (rotulo)
+);
+
+
+CREATE TABLE IF NOT EXISTS certificado
+(
+verificador varchar(31),
+texto varchar(2047),
+texto1 varchar(1023),
+texto2 varchar(1023),
+texto3 varchar(1023),
+cpf varchar (63),
+tipo varchar(31),
+nomearq varchar(1023),
+evento varchar(63),
+divulgar integer default 0,
+FOREIGN KEY (evento) REFERENCES evento(issn),
+PRIMARY KEY (verificador)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS oficinasessaopalestra
+(
+tipo varchar(63),
+nomeparticipantes varchar(511),
+verbo varchar(63),
+trabalhooucampus varchar(511),
+documento varchar(63),
+evento varchar(63),
+FOREIGN KEY (evento) REFERENCES evento(issn),
+id SERIAL PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS ticket
+(
+codigo varchar(63),
+tipo varchar(31),
+unidade integer,
+PRIMARY KEY (codigo),
+FOREIGN KEY (unidade) REFERENCES unidade(id)
+);
